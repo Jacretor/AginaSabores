@@ -146,7 +146,7 @@ const produtosAginaSabores = [
         categoria: "salgados",
         preco: 200,
         descricao: "Mini pizzas artesanais de frango com queijo derretido. Disponível em porções: 6 unidades por 200 MZN ou 12 unidades por 400 MZN.",
-        imagens: ["imagens/pizza1.jpeg"]
+        imagens: ["imagens/Pizza1.jpeg"]
     },
     {
         id: 14,
@@ -154,7 +154,7 @@ const produtosAginaSabores = [
         categoria: "salgados",
         preco: 300,
         descricao: "Mini pizzas deliciosas com recheio de carne e queijo. Disponível em porções: 6 unidades por 300 MZN ou 12 unidades por 600 MZN.",
-        imagens: ["imagens/pizza2.jpeg"]
+        imagens: ["imagens/Pizza2.jpeg"]
     },
     {
         id: 15,
@@ -162,7 +162,7 @@ const produtosAginaSabores = [
         categoria: "salgados",
         preco: 200,
         descricao: "Mini pizzas leves e saborosas de atum com queijo e especiarias. Disponível em porções: 6 unidades por 200 MZN ou 12 unidades por 400 MZN.",
-        imagens: ["imagens/pizza1.jpeg"]
+        imagens: ["imagens/Pizza1.jpeg"]
     },
 
     // --- NOVA CATEGORIA: BUQUÊS ---
