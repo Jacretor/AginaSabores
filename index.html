@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agina'Sabores | Sabores que Encantam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fefcf9; scroll-behavior: smooth; }
+        .text-chocolate { color: #361e0a; }
+        .bg-chocolate { background-color: #361e0a; }
+        .text-ouro { color: #c59357; }
+        .bg-ouro { background-color: #c59357; }
+        .scroll-clean::-webkit-scrollbar { display: none; }
+        .scroll-clean { -ms-overflow-style: none; scrollbar-width: none; }
+        .card-anim { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        
+        /* Animação Suave para Interatividade do Botão Principal */
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 25px -5px rgba(197, 147, 87, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 15px 30px -5px rgba(197, 147, 87, 0.6); }
+        }
+        .btn-interactive { animation: pulse-soft 3s infinite ease-in-out; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-orange-100/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-bold text-chocolate tracking-tight">Agina'Sabores</span>
+                    <span class="text-[10px] text-ouro uppercase tracking-widest font-semibold italic -mt-0.5">Do seu jeito. Do nosso coração.</span>
+                </div>
+                <div class="flex space-x-6 sm:space-x-8 font-semibold text-sm text-chocolate/90">
+                    <a href="#inicio" class="hover:text-ouro transition duration-200 border-b-2 border-transparent hover:border-ouro pb-1">Início</a>
+                    <a href="#cardapio" class="hover:text-ouro transition duration-200 border-b-2 border-transparent hover:border-ouro pb-1">Cardápio</a>
+                    <a href="#contacto" class="hover:text-ouro transition duration-200 border-b-2 border-transparent hover:border-ouro pb-1">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative text-white min-h-[85vh] flex items-center overflow-hidden border-b-4 border-ouro bg-stone-900">
+        
+        <div class="absolute inset-0 z-0 bg-cover bg-[center_top-15%] md:bg-[right_center] transition-transform duration-1000 hover:scale-102" style="background-image: url('imagens/banner-principal.png');"></div>
+        
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30 md:from-black/85 md:via-black/50 md:to-transparent z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20 py-20 md:py-0">
+            <div class="max-w-xl space-y-6 text-center md:text-left mx-auto md:mx-0">
+                
+                <div class="inline-flex items-center gap-2 bg-ouro/20 text-ouro border border-ouro/30 px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase">
+                    <i class="fa-solid fa-cake-candles animate-bounce"></i> Confeitaria Artesanal
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
+                    Agina'Sabores
+                </h1>
+                
+                <p class="text-ouro text-xl sm:text-2xl font-medium italic tracking-wide drop-shadow">
+                    Do seu jeito. Do nosso coração.
+                </p>
+                
+                <p class="text-gray-200 text-sm sm:text-base leading-relaxed font-normal max-w-md mx-auto md:mx-0 drop-shadow-sm">
+                    Dos bolos decorados mais luxuosos às chamuças e rissóis mais crocantes de Chissui. Cada detalhe é preparado com amor para tornar as suas celebrações inesquecíveis.
+                </p>
+                
+                <div class="pt-4">
+                    <a href="#cardapio" class="btn-interactive inline-block bg-ouro hover:bg-white text-white hover:text-chocolate font-bold px-8 py-4 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider text-sm border border-transparent hover:border-chocolate">
+                        Explorar Cardápio <i class="fa-solid fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="absolute bottom-4 right-4 z-30 bg-black/50 backdrop-blur-md border border-white/20 text-white text-[11px] px-3 py-1.5 rounded-lg flex items-center gap-2 font-medium">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span> Disponível para Encomendas
+        </div>
+    </section>
+
+    <section id="cardapio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center space-y-2 mb-8">
+            <h2 class="text-3xl font-bold text-chocolate tracking-tight">Nosso Cardápio</h2>
+            <p class="text-gray-500 text-sm max-w-md mx-auto">Filtragem e pesquisa interativa para o seu conforto.</p>
+            <div class="w-16 h-1 bg-ouro mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <div class="max-w-md mx-auto mb-10 px-2">
+            <div class="relative flex items-center bg-white shadow-sm border border-gray-200 rounded-2xl overflow-hidden focus-within:border-ouro focus-within:ring-2 focus-within:ring-ouro/20 transition-all">
+                <span class="pl-4 text-gray-400"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" id="campo-busca" oninput="filtrarPorTexto()" placeholder="Procurar bolo, salgado, doces, buquês..." class="w-full pl-3 pr-4 py-3.5 text-sm bg-transparent outline-none text-gray-700">
+            </div>
+        </div>
+
+        <div class="w-full border-b border-gray-200/80 mb-12">
+            <div class="flex space-x-2 overflow-x-auto pb-3 scroll-clean -mb-px snap-x snap-mandatory justify-start md:justify-center">
+                <button onclick="filtrarCategoria('todos', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-chocolate text-chocolate font-semibold px-6 py-2.5 text-sm transition">Todos</button>
+                <button onclick="filtrarCategoria('bolos', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Bolos</button>
+                <button onclick="filtrarCategoria('doces', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Doces</button>
+                <button onclick="filtrarCategoria('salgados', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Salgados</button>
+                <button onclick="filtrarCategoria('buques', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Buquês</button>
+                <button onclick="filtrarCategoria('promocoes', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Combos & Promoções</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="lista-produtos">
+            </div>
+    </section>
+
+    <div id="modalZoom" class="fixed inset-0 bg-black/85 hidden opacity-0 transition-opacity duration-300 z-50 flex items-center justify-center p-4 backdrop-blur-sm" onclick="fecharZoom()">
+        <div class="relative max-w-4xl max-h-[85vh] transform scale-95 transition-transform duration-300" onclick="event.stopPropagation();">
+            <button onclick="fecharZoom()" class="absolute -top-12 right-0 bg-white text-chocolate w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-ouro hover:text-white transition text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <img id="zoomImagem" src="" alt="Zoom" class="rounded-2xl max-w-full max-h-[85vh] object-contain shadow-2xl bg-black">
+        </div>
+    </div>
+
+    <footer id="contacto" class="bg-chocolate text-white pt-16 pb-8 border-t-4 border-ouro">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold tracking-wide text-ouro">Agina'Sabores</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Tornando os seus dias e celebrações muito mais doces e memoráveis.</p>
+            </div>
+            <div class="space-y-3">
+                <h4 class="text-sm font-semibold uppercase text-ouro tracking-wider">Informações</h4>
+                <p class="text-gray-300 text-sm"><i class="fa-solid fa-location-dot mr-2 text-ouro"></i> Chissui</p>
+                <p class="text-gray-300 text-sm"><i class="fa-solid fa-phone mr-2 text-ouro"></i> +258 877 395 724</p>
+            </div>
+            <div class="space-y-3">
+                <h4 class="text-sm font-semibold uppercase text-ouro tracking-wider">Atendimento Digital</h4>
+                <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                    <a href="https://instagram.com/aginasabores" target="_blank" class="hover:text-ouro transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/258877395724" target="_blank" class="hover:text-ouro transition"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="border-gray-800 my-10 max-w-7xl mx-auto">
+        <div class="text-center text-xs text-gray-500">&copy; 2026 Agina'Sabores. Todos os direitos reservados.</div>
+    </footer>
+
+    <script src="produtos.js"></script>
+
+    <script>
+        let categoriaAtual = 'todos';
+        let indicesImagensAtivas = {}; 
+
+        function iniciarCardapio() {
+            if (typeof produtosAginaSabores !== 'undefined') {
+                renderizarProdutos(produtosAginaSabores);
+            } else {
+                console.error("Erro: O arquivo produtos.js não foi carregado corretamente.");
+            }
+        }
+
+        function renderizarProdutos(lista) {
+            const container = document.getElementById('lista-produtos');
+            container.innerHTML = "";
+
+            if(lista.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center text-gray-400 italic py-16">Nenhum item disponível.</p>`;
+                return;
+            }
+
+            lista.forEach(p => {
+                const fotosArray = p.imagens; 
+                const pId = p.id;
+
+                if (indicesImagensAtivas[pId] === undefined) {
+                    indicesImagensAtivas[pId] = 0;
+                }
+
+                const card = document.createElement('div');
+                card.className = "card-anim bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between group";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden aspect-[4/3] bg-gray-50 border-b border-gray-100">
+                            <img id="img-slide-${pId}" src="${fotosArray[indicesImagensAtivas[pId]]}" alt="${p.nome}" onclick="zoomDaFotoAtual(${pId})" class="w-full h-full object-cover group-hover:scale-102 transition-all duration-500 cursor-zoom-in">
+                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-chocolate text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider shadow-sm z-10">${p.categoria}</span>
+                            
+                            ${fotosArray.length > 1 ? `
+                                <button onclick="mudarFotoCard(${pId}, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs z-10 transition">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button onclick="mudarFotoCard(${pId}, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs z-10 transition">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                                <span id="indicador-${pId}" class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full z-10 font-medium">
+                                    ${indicesImagensAtivas[pId] + 1}/${fotosArray.length}
+                                </span>
+                            ` : ''}
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-chocolate group-hover:text-ouro transition-colors line-clamp-1">${p.nome}</h3>
+                            <p class="text-gray-500 text-xs line-clamp-3 leading-relaxed">${p.descricao}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 flex items-center justify-between mt-2">
+                        <span class="text-lg font-extrabold text-chocolate">${parseFloat(p.preco).toLocaleString('pt-MZ')} MZN</span>
+                        <button onclick="encomendarWhatsApp('${p.nome}', '${p.preco}')" class="bg-chocolate text-white px-4 py-2 rounded-xl font-semibold text-xs hover:bg-ouro hover:text-white transition duration-300 flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Pedir
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        window.mudarFotoCard = function(id, direcao) {
+            const produto = produtosAginaSabores.find(p => p.id === id);
+            const fotos = produto.imagens;
+            let index = indicesImagensAtivas[id] + direcao;
+
+            if (index >= fotos.length) index = 0;
+            if (index < 0) index = fotos.length - 1;
+
+            indicesImagensAtivas[id] = index;
+
+            document.getElementById(`img-slide-${id}`).src = fotos[index];
+            const indicador = document.getElementById(`indicador-${id}`);
+            if(indicador) indicador.innerText = `${index + 1}/${fotos.length}`;
+        };
+
+        window.zoomDaFotoAtual = function(id) {
+            const imgUrl = document.getElementById(`img-slide-${id}`).src;
+            abrirZoom(imgUrl);
+        };
+
+        function filtrarCategoria(categoria, event) {
+            categoriaAtual = categoria;
+            document.getElementById('campo-busca').value = "";
+            const botoes = document.querySelectorAll('.btn-filtro');
+            botoes.forEach(btn => {
+                btn.classList.remove('border-chocolate', 'text-chocolate', 'font-semibold');
+                btn.classList.add('border-transparent', 'text-gray-500', 'font-medium');
+            });
+            event.target.classList.remove('border-transparent', 'text-gray-500', 'font-medium');
+            event.target.classList.add('border-chocolate', 'text-chocolate', 'font-semibold');
+            aplicarFiltros();
+        }
+
+        function filtrarPorTexto() { aplicarFiltros(); }
+
+        function aplicarFiltros() {
+            const termo = document.getElementById('campo-busca').value.toLowerCase().trim();
+            let dadosFiltrados = produtosAginaSabores;
+
+            if (categoriaAtual !== 'todos') dadosFiltrados = dadosFiltrados.filter(p => p.categoria === categoriaAtual);
+            if (termo !== "") {
+                dadosFiltrados = dadosFiltrados.filter(p => 
+                    p.nome.toLowerCase().includes(termo) || 
+                    p.descricao.toLowerCase().includes(termo)
+                );
+            }
+            renderizarProdutos(dadosFiltrados);
+        }
+
+        function abrirZoom(urlImagem) {
+            const modal = document.getElementById('modalZoom');
+            document.getElementById('zoomImagem').src = urlImagem;
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 50);
+        }
+
+        function fecharZoom() {
+            const modal = document.getElementById('modalZoom');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function encomendarWhatsApp(nome, preco) {
+            const telefone = "258877395724";
+            const mensagem = `Olá, Agina'Sabores! Gostaria de encomendar: *${nome}* (Valor: ${parseFloat(preco).toLocaleString('pt-MZ')} MZN).`;
+            window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
+
+        iniciarCardapio();
+    </script>
+</body>
+</html>
