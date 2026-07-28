@@ -85,7 +85,7 @@ const produtosAginaSabores = [
         categoria: "salgados",
         descricao: "Mini pizzas deliciosas assadas na hora com molho artesanal e muito queijo. Escolha a porção (6 ou 12 unidades) e o sabor.",
         precoBase: 200,
-        imagens: ["imagens/pizza1.jpeg", "imagens/pizza2.jpeg"],
+        imagens: ["imagens/Pizza1.jpeg", "imagens/Pizza2.jpeg"],
         opcoes: {
             tamanhos: [
                 { nome: "Porção de 6 Unidades (Frango / Atum)", preco: 200 },
