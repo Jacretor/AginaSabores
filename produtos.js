@@ -141,9 +141,10 @@ const produtosAginaSabores = [
         descricao: "O presente completo ideal! Contém: mini bolo decorado, rissóis crocantes, uma maçã de chocolate requintada e sumo.",
         precoBase: 1500,
         imagens: [
-            "imagens/bandeja-mimos.jpeg",
-            "imagens/bandeja-mimos-2.jpeg",
-            "imagens/bandeja-mimos-3.jpeg"
+            "imagens/mimo.jpeg",
+            "imagens/mimo1.jpeg",
+            "imagens/mimo2.jpeg",
+            "imagens/mimo3.jpeg"
         ],
         opcoes: {
             tamanhos: [
