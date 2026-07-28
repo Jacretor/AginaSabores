@@ -86,9 +86,9 @@ const produtosAginaSabores = [
         imagens: ["imagens/Pizza1.jpeg", "imagens/Pizza2.jpeg"],
         opcoes: {
             tamanhos: [
-                { nome: "Porção de 6 Unidades (Frango / Atum)", preco: 300 },
+                { nome: "Porção de 6 Unidades (Frango / Atum)", preco: 200 },
                 { nome: "Porção de 6 Unidades (Carne)", preco: 300 },
-                { nome: "Porção de 12 Unidades (Frango / Atum)", preco: 600 },
+                { nome: "Porção de 12 Unidades (Frango / Atum)", preco: 400 },
                 { nome: "Porção de 12 Unidades (Carne)", preco: 600 }
             ],
             sabores: ["Frango com Queijo", "Carne Moída", "Atum com Queijo"]
