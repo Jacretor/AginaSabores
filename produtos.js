@@ -37,6 +37,26 @@ const produtosAginaSabores = [
         }
     },
     {
+        id: 9,
+        nome: "Mini Bolos Artesanais",
+        categoria: "bolos",
+        descricao: "Mini bolos deliciosos e charmosos na medida certa para um presente individual ou desejo do dia.",
+        precoBase: 150,
+        imagens: [
+            "imagens/minibolo9.jpeg",
+            "imagens/minibolo.jpeg",
+            "imagens/minibolo2.jpeg"
+        ],
+        opcoes: {
+            tamanhos: [
+                { nome: "Mini Bolo Simples", preco: 150 },
+                { nome: "Mini Bolo Especial (Com Decor/Recheio Extra)", preco: 200 }
+            ],
+            sabores: ["Chocolate", "Baunilha", "Red Velvet", "Cenoura com Cobertura"]
+        }
+    },
+    
+    {
         id: 3,
         nome: "Chamuças Artesanais (Dúzia)",
         categoria: "salgados",
