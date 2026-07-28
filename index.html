@@ -1,209 +1,316 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agina'Sabores | Sabores que Encantam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Agynara Sabores | Confeitaria & Salgados Artesanais</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        chocolate: '#361e0a',
+                        ouro: '#c59357',
+                        'ouro-dark': '#a6773d'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fefcf9; scroll-behavior: smooth; }
-        .text-chocolate { color: #361e0a; }
-        .bg-chocolate { background-color: #361e0a; }
-        .text-ouro { color: #c59357; }
-        .bg-ouro { background-color: #c59357; }
+        body { background-color: #fcfbfa; -webkit-tap-highlight-color: transparent; }
         .scroll-clean::-webkit-scrollbar { display: none; }
         .scroll-clean { -ms-overflow-style: none; scrollbar-width: none; }
-        .card-anim { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        
-        /* Animação Suave para Interatividade do Botão Principal */
-        @keyframes pulse-soft {
-            0%, 100% { transform: scale(1); box-shadow: 0 10px 25px -5px rgba(197, 147, 87, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 15px 30px -5px rgba(197, 147, 87, 0.6); }
-        }
-        .btn-interactive { animation: pulse-soft 3s infinite ease-in-out; }
+        .img-fade { transition: opacity 0.7s ease-in-out, transform 0.5s ease-out; }
     </style>
 </head>
-<body class="text-gray-800 antialiased">
+<body class="text-gray-800 antialiased selection:bg-ouro selection:text-white pb-20 md:pb-0">
 
-    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-orange-100/50">
+    <!-- NAV BAR -->
+    <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-orange-100/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-chocolate tracking-tight">Agina'Sabores</span>
-                    <span class="text-[10px] text-ouro uppercase tracking-widest font-semibold italic -mt-0.5">Do seu jeito. Do nosso coração.</span>
-                </div>
-                <div class="flex space-x-6 sm:space-x-8 font-semibold text-sm text-chocolate/90">
-                    <a href="#inicio" class="hover:text-ouro transition duration-200 border-b-2 border-transparent hover:border-ouro pb-1">Início</a>
-                    <a href="#cardapio" class="hover:text-ouro transition duration-200 border-b-2 border-transparent hover:border-ouro pb-1">Cardápio</a>
-                    <a href="#contacto" class="hover:text-ouro transition duration-200 border-b-2 border-transparent hover:border-ouro pb-1">Contacto</a>
-                </div>
+                <a href="#inicio" class="flex flex-col">
+                    <span class="text-xl sm:text-2xl font-extrabold text-chocolate tracking-tight">Agynara Sabores</span>
+                    <span class="text-[9px] sm:text-[10px] text-ouro uppercase tracking-widest font-semibold italic -mt-1">Do seu jeito. Do nosso coração.</span>
+                </a>
+                
+                <nav class="hidden md:flex space-x-8 font-semibold text-sm text-chocolate">
+                    <a href="#inicio" class="hover:text-ouro transition duration-200">Início</a>
+                    <a href="#cardapio" class="hover:text-ouro transition duration-200">Cardápio</a>
+                    <a href="#contacto" class="hover:text-ouro transition duration-200">Contacto</a>
+                </nav>
+
+                <button onclick="toggleCarrinho()" class="relative bg-chocolate/5 hover:bg-chocolate/10 text-chocolate px-3.5 py-2.5 rounded-xl transition flex items-center gap-2 font-semibold text-sm">
+                    <i class="fa-solid fa-cart-shopping text-ouro text-lg"></i>
+                    <span class="hidden sm:inline">Meu Pedido</span>
+                    <span id="cart-count-header" class="bg-ouro text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <section id="inicio" class="relative text-white min-h-[85vh] flex items-center overflow-hidden border-b-4 border-ouro bg-stone-900">
-        
-        <div class="absolute inset-0 z-0 bg-cover bg-[center_top-15%] md:bg-[right_center] transition-transform duration-1000 hover:scale-102" style="background-image: url('imagens/banner-principal.png');"></div>
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30 md:from-black/85 md:via-black/50 md:to-transparent z-10"></div>
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative text-white min-h-[65vh] flex items-center overflow-hidden bg-chocolate">
+        <div class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 scale-105" style="background-image: url('imagens/banner-principal.png');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-chocolate/95 via-chocolate/85 to-chocolate/50 z-10"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20 py-20 md:py-0">
-            <div class="max-w-xl space-y-6 text-center md:text-left mx-auto md:mx-0">
-                
-                <div class="inline-flex items-center gap-2 bg-ouro/20 text-ouro border border-ouro/30 px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase">
-                    <i class="fa-solid fa-cake-candles animate-bounce"></i> Confeitaria Artesanal
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20 py-12 md:py-20">
+            <div class="max-w-2xl space-y-5 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 bg-ouro/20 text-ouro border border-ouro/30 px-3.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase backdrop-blur-sm">
+                    <i class="fa-solid fa-star text-ouro"></i> Confeitaria & Salgados Artesanais
                 </div>
-                
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
-                    Agina'Sabores
-                </h1>
-                
-                <p class="text-ouro text-xl sm:text-2xl font-medium italic tracking-wide drop-shadow">
-                    Do seu jeito. Do nosso coração.
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">Agynara Sabores</h1>
+                <p class="text-ouro text-lg sm:text-2xl font-medium italic">Do seu jeito. Do nosso coração.</p>
+                <p class="text-gray-200 text-xs sm:text-base leading-relaxed max-w-lg mx-auto md:mx-0">
+                    Bolos decorados de luxo, salgados crocantes, mini pizzas e buquês especiais preparados artesanalmente sob medida para si.
                 </p>
-                
-                <p class="text-gray-200 text-sm sm:text-base leading-relaxed font-normal max-w-md mx-auto md:mx-0 drop-shadow-sm">
-                    Dos bolos decorados mais luxuosos às chamuças e rissóis mais crocantes de Chissui. Cada detalhe é preparado com amor para tornar as suas celebrações inesquecíveis.
-                </p>
-                
-                <div class="pt-4">
-                    <a href="#cardapio" class="btn-interactive inline-block bg-ouro hover:bg-white text-white hover:text-chocolate font-bold px-8 py-4 rounded-xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider text-sm border border-transparent hover:border-chocolate">
-                        Explorar Cardápio <i class="fa-solid fa-arrow-down ml-2"></i>
+                <div class="pt-3 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                    <a href="#cardapio" class="bg-ouro hover:bg-ouro-dark text-white font-bold px-7 py-3.5 rounded-xl shadow-xl transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2">
+                        Ver Cardápio <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </div>
-                
             </div>
-        </div>
-
-        <div class="absolute bottom-4 right-4 z-30 bg-black/50 backdrop-blur-md border border-white/20 text-white text-[11px] px-3 py-1.5 rounded-lg flex items-center gap-2 font-medium">
-            <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span> Disponível para Encomendas
         </div>
     </section>
 
-    <section id="cardapio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <!-- CARDÁPIO SECTION -->
+    <section id="cardapio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="text-center space-y-2 mb-8">
-            <h2 class="text-3xl font-bold text-chocolate tracking-tight">Nosso Cardápio</h2>
-            <p class="text-gray-500 text-sm max-w-md mx-auto">Filtragem e pesquisa interativa para o seu conforto.</p>
-            <div class="w-16 h-1 bg-ouro mx-auto mt-3 rounded-full"></div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-chocolate tracking-tight">Nosso Cardápio</h2>
+            <p class="text-gray-500 text-xs sm:text-sm">Selecione o produto e escolha o tamanho, sabor ou recheio desejado</p>
+            <div class="w-16 h-1 bg-ouro mx-auto rounded-full mt-2"></div>
         </div>
 
-        <div class="max-w-md mx-auto mb-10 px-2">
+        <!-- BARRA DE BUSCA -->
+        <div class="max-w-lg mx-auto mb-6">
             <div class="relative flex items-center bg-white shadow-sm border border-gray-200 rounded-2xl overflow-hidden focus-within:border-ouro focus-within:ring-2 focus-within:ring-ouro/20 transition-all">
                 <span class="pl-4 text-gray-400"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" id="campo-busca" oninput="filtrarPorTexto()" placeholder="Procurar bolo, salgado, doces, buquês..." class="w-full pl-3 pr-4 py-3.5 text-sm bg-transparent outline-none text-gray-700">
+                <input type="text" id="campo-busca" oninput="filtrarProdutos()" placeholder="Buscar bolo, pizza, chamuça, buquê..." class="w-full pl-3 pr-4 py-3 text-sm bg-transparent outline-none text-gray-700">
             </div>
         </div>
 
-        <div class="w-full border-b border-gray-200/80 mb-12">
-            <div class="flex space-x-2 overflow-x-auto pb-3 scroll-clean -mb-px snap-x snap-mandatory justify-start md:justify-center">
-                <button onclick="filtrarCategoria('todos', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-chocolate text-chocolate font-semibold px-6 py-2.5 text-sm transition">Todos</button>
-                <button onclick="filtrarCategoria('bolos', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Bolos</button>
-                <button onclick="filtrarCategoria('doces', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Doces</button>
-                <button onclick="filtrarCategoria('salgados', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Salgados</button>
-                <button onclick="filtrarCategoria('buques', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Buquês</button>
-                <button onclick="filtrarCategoria('promocoes', event)" class="btn-filtro snap-start shrink-0 border-b-2 border-transparent text-gray-500 hover:text-chocolate font-medium px-6 py-2.5 text-sm transition">Combos & Promoções</button>
+        <!-- ABAS DE CATEGORIAS -->
+        <div class="w-full border-b border-gray-200 mb-8 overflow-hidden">
+            <div class="flex space-x-2 overflow-x-auto pb-3 scroll-clean justify-start md:justify-center" id="container-categorias">
+                <button onclick="filtrarCategoria('todos', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-bold bg-chocolate text-white text-xs sm:text-sm transition shadow-sm">Todos</button>
+                <button onclick="filtrarCategoria('bolos', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-chocolate text-xs sm:text-sm transition">Bolos</button>
+                <button onclick="filtrarCategoria('salgados', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-chocolate text-xs sm:text-sm transition">Salgados</button>
+                <button onclick="filtrarCategoria('doces', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-chocolate text-xs sm:text-sm transition">Doces</button>
+                <button onclick="filtrarCategoria('buques', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-chocolate text-xs sm:text-sm transition">Buquês</button>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="lista-produtos">
-            </div>
+        <!-- GRID DE PRODUTOS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="lista-produtos"></div>
     </section>
 
-    <div id="modalZoom" class="fixed inset-0 bg-black/85 hidden opacity-0 transition-opacity duration-300 z-50 flex items-center justify-center p-4 backdrop-blur-sm" onclick="fecharZoom()">
-        <div class="relative max-w-4xl max-h-[85vh] transform scale-95 transition-transform duration-300" onclick="event.stopPropagation();">
-            <button onclick="fecharZoom()" class="absolute -top-12 right-0 bg-white text-chocolate w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-ouro hover:text-white transition text-lg"><i class="fa-solid fa-xmark"></i></button>
-            <img id="zoomImagem" src="" alt="Zoom" class="rounded-2xl max-w-full max-h-[85vh] object-contain shadow-2xl bg-black">
+    <!-- MODAL DE PERSONALIZAÇÃO DO PRODUTO -->
+    <div id="modalOpcoes" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-3 sm:p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transform transition-all flex flex-col max-h-[90vh]">
+            <div class="relative bg-chocolate text-white p-4 sm:p-5 flex items-center justify-between">
+                <h3 id="modalOpcoesTitulo" class="font-bold text-base sm:text-lg text-white">Personalizar Produto</h3>
+                <button onclick="fecharModalOpcoes()" class="text-gray-300 hover:text-white text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-4 flex-1" id="modalOpcoesCorpo"></div>
+
+            <div class="p-4 sm:p-5 border-t border-gray-100 bg-stone-50 flex items-center justify-between gap-3">
+                <div>
+                    <span class="text-[10px] sm:text-xs text-gray-400 block">Preço Total</span>
+                    <span id="modalOpcoesPreco" class="text-lg sm:text-xl font-extrabold text-chocolate">0 MZN</span>
+                </div>
+                <button onclick="confirmarAdicaoCarrinho()" class="bg-ouro hover:bg-ouro-dark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Adicionar
+                </button>
+            </div>
         </div>
     </div>
 
-    <footer id="contacto" class="bg-chocolate text-white pt-16 pb-8 border-t-4 border-ouro">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
-            <div class="space-y-4">
-                <h3 class="text-xl font-bold tracking-wide text-ouro">Agina'Sabores</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Tornando os seus dias e celebrações muito mais doces e memoráveis.</p>
+    <!-- DRAWER / MODAL DO CARRINHO DE COMPRAS -->
+    <div id="carrinho-modal" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity duration-300 flex justify-end">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
+            <!-- Header Carrinho -->
+            <div class="p-4 sm:p-5 border-b border-gray-100 flex items-center justify-between bg-chocolate text-white">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-basket-shopping text-ouro text-xl"></i>
+                    <h3 class="font-bold text-base sm:text-lg">Seu Pedido</h3>
+                </div>
+                <button onclick="toggleCarrinho()" class="text-gray-300 hover:text-white text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="space-y-3">
-                <h4 class="text-sm font-semibold uppercase text-ouro tracking-wider">Informações</h4>
-                <p class="text-gray-300 text-sm"><i class="fa-solid fa-location-dot mr-2 text-ouro"></i> Chissui</p>
-                <p class="text-gray-300 text-sm"><i class="fa-solid fa-phone mr-2 text-ouro"></i> +258 877 395 724</p>
+
+            <!-- Lista de Itens -->
+            <div class="p-4 sm:p-5 overflow-y-auto flex-1 space-y-3" id="itens-carrinho"></div>
+
+            <!-- Opções de Entrega & Totais -->
+            <div class="p-4 sm:p-5 border-t border-gray-100 bg-stone-50 space-y-4">
+                <!-- Seletor de Delivery -->
+                <div class="bg-white p-3 rounded-xl border border-gray-200 space-y-2">
+                    <span class="block text-xs font-bold text-chocolate uppercase tracking-wider">Forma de Entrega:</span>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer bg-stone-50 hover:border-ouro">
+                            <input type="radio" name="opcaoEntrega" value="retirada" checked onchange="atualizarTotalCarrinho()" class="accent-ouro">
+                            <span>Retirada no Local</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer bg-stone-50 hover:border-ouro">
+                            <input type="radio" name="opcaoEntrega" value="delivery" onchange="atualizarTotalCarrinho()" class="accent-ouro">
+                            <span>Delivery (+100 MZN)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <div class="flex justify-between text-xs text-gray-500">
+                        <span>Subtotal:</span>
+                        <span id="subtotal-carrinho">0 MZN</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500" id="linha-taxa-delivery">
+                        <span>Taxa de Passagem/Delivery:</span>
+                        <span id="taxa-delivery-valor">0 MZN</span>
+                    </div>
+                    <div class="flex items-center justify-between text-base font-bold text-chocolate pt-1 border-t border-gray-200">
+                        <span>Total Final:</span>
+                        <span id="total-carrinho" class="text-xl text-ouro">0 MZN</span>
+                    </div>
+                </div>
+
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Finalizar no WhatsApp
+                </button>
             </div>
+        </div>
+    </div>
+
+    <!-- BOTÃO FLUTUANTE DO CARRINHO (MOBILE) -->
+    <button onclick="toggleCarrinho()" class="fixed bottom-5 right-5 z-30 bg-chocolate text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 transition active:scale-95 border-2 border-ouro">
+        <i class="fa-solid fa-cart-shopping text-lg text-ouro"></i>
+        <span id="cart-count-float" class="absolute -top-1 -right-1 bg-ouro text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+    </button>
+
+    <!-- FOOTER COM CONTACTOS & REDES SOCIAIS -->
+    <footer id="contacto" class="bg-chocolate text-white pt-12 pb-8 border-t-4 border-ouro mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div class="space-y-3">
-                <h4 class="text-sm font-semibold uppercase text-ouro tracking-wider">Atendimento Digital</h4>
-                <div class="flex justify-center md:justify-start space-x-4 text-xl">
-                    <a href="https://instagram.com/aginasabores" target="_blank" class="hover:text-ouro transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://wa.me/258877395724" target="_blank" class="hover:text-ouro transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <h3 class="text-xl font-bold tracking-wide text-ouro">Agynara Sabores</h3>
+                <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Tornando os seus dias e celebrações muito mais doces, saborosos e inesquecíveis com produtos feitos do nosso coração.</p>
+            </div>
+            
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase text-ouro tracking-wider">Contactos & Localização</h4>
+                <p class="text-gray-300 text-xs sm:text-sm"><i class="fa-solid fa-location-dot mr-2 text-ouro"></i> Chissui, Moçambique</p>
+                <p class="text-gray-300 text-xs sm:text-sm"><i class="fa-solid fa-phone mr-2 text-ouro"></i> +258 842 513 428</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase text-ouro tracking-wider">Redes Sociais & Mensagens</h4>
+                <div class="flex justify-center md:justify-start gap-4 text-2xl pt-1">
+                    <a href="https://wa.me/258842513428" target="_blank" class="hover:text-ouro transition text-green-400" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://facebook.com" target="_blank" class="hover:text-ouro transition text-blue-500" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/aginasabores" target="_blank" class="hover:text-ouro transition text-pink-500" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
         </div>
-        <hr class="border-gray-800 my-10 max-w-7xl mx-auto">
-        <div class="text-center text-xs text-gray-500">&copy; 2026 Agina'Sabores. Todos os direitos reservados.</div>
+
+        <hr class="border-gray-800 my-8 max-w-7xl mx-auto">
+        <div class="text-center text-xs text-gray-500">&copy; 2026 Agynara Sabores. Todos os direitos reservados.</div>
     </footer>
 
+    <!-- SCRIPTS JS -->
     <script src="produtos.js"></script>
-
     <script>
         let categoriaAtual = 'todos';
-        let indicesImagensAtivas = {}; 
+        let indicesImagensAtivas = {};
+        let carrinho = [];
+        let produtoSelecionadoTemp = null;
+        let precoCalculadoTemp = 0;
+        let timerSlideshow = null;
 
-        function iniciarCardapio() {
+        document.addEventListener("DOMContentLoaded", () => {
             if (typeof produtosAginaSabores !== 'undefined') {
                 renderizarProdutos(produtosAginaSabores);
-            } else {
-                console.error("Erro: O arquivo produtos.js não foi carregado corretamente.");
             }
+            iniciarSlideshowAutomatico();
+        });
+
+        // SLIDESHOW AUTOMÁTICO DE IMAGENS
+        function iniciarSlideshowAutomatico() {
+            if (timerSlideshow) clearInterval(timerSlideshow);
+            timerSlideshow = setInterval(() => {
+                if (typeof produtosAginaSabores !== 'undefined') {
+                    produtosAginaSabores.forEach(produto => {
+                        if (produto.imagens && produto.imagens.length > 1) {
+                            mudarFotoCard(produto.id, 1, false);
+                        }
+                    });
+                }
+            }, 3500);
         }
 
+        // RENDERIZAR LISTA DE PRODUTOS
         function renderizarProdutos(lista) {
             const container = document.getElementById('lista-produtos');
             container.innerHTML = "";
 
-            if(lista.length === 0) {
-                container.innerHTML = `<p class="col-span-full text-center text-gray-400 italic py-16">Nenhum item disponível.</p>`;
+            if (!lista || lista.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center text-gray-400 italic py-12 text-sm">Nenhum produto encontrado nesta categoria.</p>`;
                 return;
             }
 
             lista.forEach(p => {
-                const fotosArray = p.imagens; 
+                const fotosArray = p.imagens;
                 const pId = p.id;
-
-                if (indicesImagensAtivas[pId] === undefined) {
-                    indicesImagensAtivas[pId] = 0;
-                }
+                if (indicesImagensAtivas[pId] === undefined) indicesImagensAtivas[pId] = 0;
 
                 const card = document.createElement('div');
-                card.className = "card-anim bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between group";
-                
+                card.className = "bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between transition-all duration-300 group";
+
+                let indicadoresHTML = "";
+                if (fotosArray.length > 1) {
+                    indicadoresHTML = `
+                        <div id="dots-${pId}" class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 z-10">
+                            ${fotosArray.map((_, idx) => `
+                                <span class="dot-${pId} w-2 h-2 rounded-full transition-all duration-300 ${idx === indicesImagensAtivas[pId] ? 'bg-ouro w-5' : 'bg-white/70'}"></span>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
                 card.innerHTML = `
                     <div>
-                        <div class="relative overflow-hidden aspect-[4/3] bg-gray-50 border-b border-gray-100">
-                            <img id="img-slide-${pId}" src="${fotosArray[indicesImagensAtivas[pId]]}" alt="${p.nome}" onclick="zoomDaFotoAtual(${pId})" class="w-full h-full object-cover group-hover:scale-102 transition-all duration-500 cursor-zoom-in">
-                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-chocolate text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider shadow-sm z-10">${p.categoria}</span>
+                        <div class="relative overflow-hidden aspect-[4/3] bg-stone-100">
+                            <img id="img-slide-${pId}" src="${fotosArray[indicesImagensAtivas[pId]]}" alt="${p.nome}" class="img-fade w-full h-full object-cover group-hover:scale-105">
+                            <span class="absolute top-3 right-3 bg-chocolate/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider z-10">${p.categoria}</span>
                             
                             ${fotosArray.length > 1 ? `
-                                <button onclick="mudarFotoCard(${pId}, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs z-10 transition">
+                                <button onclick="mudarFotoCard(${pId}, -1, true)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs z-10 transition">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </button>
-                                <button onclick="mudarFotoCard(${pId}, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs z-10 transition">
+                                <button onclick="mudarFotoCard(${pId}, 1, true)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/70 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs z-10 transition">
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </button>
-                                <span id="indicador-${pId}" class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full z-10 font-medium">
-                                    ${indicesImagensAtivas[pId] + 1}/${fotosArray.length}
-                                </span>
+                                ${indicadoresHTML}
                             ` : ''}
                         </div>
-                        <div class="p-5 space-y-2">
-                            <h3 class="text-lg font-bold text-chocolate group-hover:text-ouro transition-colors line-clamp-1">${p.nome}</h3>
-                            <p class="text-gray-500 text-xs line-clamp-3 leading-relaxed">${p.descricao}</p>
+                        <div class="p-4 sm:p-5 space-y-1.5">
+                            <h3 class="text-base font-bold text-chocolate group-hover:text-ouro transition-colors">${p.nome}</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">${p.descricao}</p>
                         </div>
                     </div>
-                    <div class="p-5 pt-0 flex items-center justify-between mt-2">
-                        <span class="text-lg font-extrabold text-chocolate">${parseFloat(p.preco).toLocaleString('pt-MZ')} MZN</span>
-                        <button onclick="encomendarWhatsApp('${p.nome}', '${p.preco}')" class="bg-chocolate text-white px-4 py-2 rounded-xl font-semibold text-xs hover:bg-ouro hover:text-white transition duration-300 flex items-center gap-1.5 shadow-sm">
-                            <i class="fa-brands fa-whatsapp text-sm"></i> Pedir
+                    <div class="p-4 sm:p-5 pt-0 flex items-center justify-between mt-2">
+                        <div>
+                            <span class="text-[10px] text-gray-400 block">A partir de</span>
+                            <span class="text-base sm:text-lg font-extrabold text-chocolate">${parseFloat(p.precoBase).toLocaleString('pt-MZ')} MZN</span>
+                        </div>
+                        <button onclick="abrirModalOpcoes(${p.id})" class="bg-chocolate hover:bg-ouro text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-semibold text-xs transition duration-300 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-sliders"></i> Opções
                         </button>
                     </div>
                 `;
@@ -211,8 +318,13 @@
             });
         }
 
-        window.mudarFotoCard = function(id, direcao) {
+        // TROCA DE FOTO NO CARD
+        window.mudarFotoCard = function(id, direcao, interacaoManual = false) {
             const produto = produtosAginaSabores.find(p => p.id === id);
+            if (!produto) return;
+            const imgElement = document.getElementById(`img-slide-${id}`);
+            if (!imgElement) return;
+
             const fotos = produto.imagens;
             let index = indicesImagensAtivas[id] + direcao;
 
@@ -221,65 +333,296 @@
 
             indicesImagensAtivas[id] = index;
 
-            document.getElementById(`img-slide-${id}`).src = fotos[index];
-            const indicador = document.getElementById(`indicador-${id}`);
-            if(indicador) indicador.innerText = `${index + 1}/${fotos.length}`;
-        };
+            imgElement.style.opacity = '0.3';
+            setTimeout(() => {
+                imgElement.src = fotos[index];
+                imgElement.style.opacity = '1';
+            }, 150);
 
-        window.zoomDaFotoAtual = function(id) {
-            const imgUrl = document.getElementById(`img-slide-${id}`).src;
-            abrirZoom(imgUrl);
-        };
-
-        function filtrarCategoria(categoria, event) {
-            categoriaAtual = categoria;
-            document.getElementById('campo-busca').value = "";
-            const botoes = document.querySelectorAll('.btn-filtro');
-            botoes.forEach(btn => {
-                btn.classList.remove('border-chocolate', 'text-chocolate', 'font-semibold');
-                btn.classList.add('border-transparent', 'text-gray-500', 'font-medium');
+            const dots = document.querySelectorAll(`.dot-${id}`);
+            dots.forEach((dot, idx) => {
+                dot.className = `dot-${id} ${idx === index ? 'w-5 h-2 rounded-full transition-all duration-300 bg-ouro' : 'w-2 h-2 rounded-full transition-all duration-300 bg-white/70'}`;
             });
-            event.target.classList.remove('border-transparent', 'text-gray-500', 'font-medium');
-            event.target.classList.add('border-chocolate', 'text-chocolate', 'font-semibold');
-            aplicarFiltros();
+
+            if (interacaoManual) iniciarSlideshowAutomatico();
+        };
+
+        // ABRIR MODAL DE SELEÇÃO/OPÇÕES
+        function abrirModalOpcoes(idProduto) {
+            const produto = produtosAginaSabores.find(p => p.id === idProduto);
+            if (!produto) return;
+
+            produtoSelecionadoTemp = JSON.parse(JSON.stringify(produto));
+            document.getElementById('modalOpcoesTitulo').innerText = produto.nome;
+            const corpo = document.getElementById('modalOpcoesCorpo');
+            corpo.innerHTML = "";
+
+            // Opção de Tamanhos / Porções / Preço Principal
+            if (produto.opcoes.tamanhos || produto.opcoes.recheios) {
+                const listaOpcoesPreco = produto.opcoes.tamanhos || produto.opcoes.recheios;
+                const tituloGrupo = produto.opcoes.tamanhos ? "Escolha a Porção / Tamanho:" : "Escolha o Recheio / Sabor:";
+                
+                let htmlGrupo = `<div class="space-y-2">
+                    <label class="block text-xs font-bold text-chocolate uppercase tracking-wider">${tituloGrupo}</label>
+                    <div class="space-y-2">`;
+                
+                listaOpcoesPreco.forEach((op, idx) => {
+                    const preco = typeof op === 'object' ? op.preco : produto.precoBase;
+                    const nome = typeof op === 'object' ? op.nome : op;
+                    const checked = idx === 0 ? 'checked' : '';
+
+                    htmlGrupo += `
+                        <label class="flex items-center justify-between p-3 border rounded-xl cursor-pointer hover:border-ouro transition bg-white">
+                            <div class="flex items-center gap-2.5">
+                                <input type="radio" name="opcaoPrincipal" value="${nome}" data-preco="${preco}" ${checked} onchange="atualizarPrecoModal()" class="accent-ouro w-4 h-4">
+                                <span class="text-xs sm:text-sm font-semibold text-gray-700">${nome}</span>
+                            </div>
+                            <span class="text-xs sm:text-sm font-bold text-chocolate">${preco.toLocaleString('pt-MZ')} MZN</span>
+                        </label>
+                    `;
+                });
+                htmlGrupo += `</div></div>`;
+                corpo.innerHTML += htmlGrupo;
+            }
+
+            // Opção de Sabores (para pizzas, bolos, doces, etc)
+            if (produto.opcoes.sabores && produto.opcoes.tamanhos) {
+                let htmlSabores = `<div class="space-y-2 pt-1">
+                    <label class="block text-xs font-bold text-chocolate uppercase tracking-wider">Sabor / Recheio Desejado:</label>
+                    <select id="selectSaborSecundario" class="w-full p-3 border border-gray-200 rounded-xl bg-white text-xs sm:text-sm focus:outline-none focus:border-ouro">`;
+                produto.opcoes.sabores.forEach(sabor => {
+                    htmlSabores += `<option value="${sabor}">${sabor}</option>`;
+                });
+                htmlSabores += `</select></div>`;
+                corpo.innerHTML += htmlSabores;
+            }
+
+            // Opção de Cores para Rosas
+            if (produto.opcoes.cores) {
+                let htmlCores = `<div class="space-y-2 pt-1">
+                    <label class="block text-xs font-bold text-chocolate uppercase tracking-wider">Cor das Rosas:</label>
+                    <select id="selectCorSecundaria" class="w-full p-3 border border-gray-200 rounded-xl bg-white text-xs sm:text-sm focus:outline-none focus:border-ouro">`;
+                produto.opcoes.cores.forEach(cor => {
+                    htmlCores += `<option value="${cor}">${cor}</option>`;
+                });
+                htmlCores += `</select></div>`;
+                corpo.innerHTML += htmlCores;
+            }
+
+            // Observação
+            corpo.innerHTML += `
+                <div class="space-y-2 pt-1">
+                    <label class="block text-xs font-bold text-chocolate uppercase tracking-wider">Observações / Detalhes do Pedido:</label>
+                    <textarea id="obsProduto" rows="2" placeholder="Ex: Sem molho picante, escrever 'Feliz Aniversário'..." class="w-full p-3 border border-gray-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-ouro"></textarea>
+                </div>
+            `;
+
+            atualizarPrecoModal();
+            document.getElementById('modalOpcoes').classList.remove('hidden');
         }
 
-        function filtrarPorTexto() { aplicarFiltros(); }
+        function fecharModalOpcoes() {
+            document.getElementById('modalOpcoes').classList.add('hidden');
+        }
 
-        function aplicarFiltros() {
+        function atualizarPrecoModal() {
+            const radioSelecionado = document.querySelector('input[name="opcaoPrincipal"]:checked');
+            if (radioSelecionado) {
+                precoCalculadoTemp = parseFloat(radioSelecionado.getAttribute('data-preco'));
+            } else {
+                precoCalculadoTemp = produtoSelecionadoTemp.precoBase;
+            }
+            document.getElementById('modalOpcoesPreco').innerText = `${precoCalculadoTemp.toLocaleString('pt-MZ')} MZN`;
+        }
+
+        function confirmarAdicaoCarrinho() {
+            const radioSelecionado = document.querySelector('input[name="opcaoPrincipal"]:checked');
+            const selectSabor = document.getElementById('selectSaborSecundario');
+            const selectCor = document.getElementById('selectCorSecundaria');
+            const obs = document.getElementById('obsProduto').value.trim();
+
+            let detalhes = [];
+            if (radioSelecionado) detalhes.push(radioSelecionado.value);
+            if (selectSabor) detalhes.push(`Sabor: ${selectSabor.value}`);
+            if (selectCor) detalhes.push(`Cor: ${selectCor.value}`);
+            if (obs) detalhes.push(`Obs: ${obs}`);
+
+            const itemParaCarrinho = {
+                idCart: Date.now(), // ID único para cada variação
+                id: produtoSelecionadoTemp.id,
+                nome: produtoSelecionadoTemp.nome,
+                detalhes: detalhes.join(' | '),
+                preco: precoCalculadoTemp,
+                qtd: 1
+            };
+
+            carrinho.push(itemParaCarrinho);
+            fecharModalOpcoes();
+            atualizarCarrinho();
+            toggleCarrinho(true);
+        }
+
+        // REMOVER ITEM COMPLETAMENTE
+        function removerItemCarrinho(idCart) {
+            carrinho = carrinho.filter(i => i.idCart !== idCart);
+            atualizarCarrinho();
+        }
+
+        // ALTERAR QUANTIDADE (+/-)
+        function alterarQuantidade(idCart, delta) {
+            const item = carrinho.find(i => i.idCart === idCart);
+            if (item) {
+                item.qtd += delta;
+                if (item.qtd <= 0) {
+                    removerItemCarrinho(idCart);
+                    return;
+                }
+            }
+            atualizarCarrinho();
+        }
+
+        // ATUALIZAR CARRINHO E TOTAIS
+        function atualizarCarrinho() {
+            const container = document.getElementById('itens-carrinho');
+            const headerCount = document.getElementById('cart-count-header');
+            const floatCount = document.getElementById('cart-count-float');
+
+            container.innerHTML = "";
+            let totalItens = 0;
+
+            if (carrinho.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-gray-400">
+                    <i class="fa-solid fa-basket-shopping text-4xl mb-3 block"></i>
+                    <p class="text-xs sm:text-sm">Seu carrinho está vazio.</p>
+                </div>`;
+            } else {
+                carrinho.forEach(item => {
+                    const subtotal = item.preco * item.qtd;
+                    totalItens += item.qtd;
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = "bg-stone-50 p-3 rounded-xl border border-gray-100 space-y-2 relative group";
+                    itemDiv.innerHTML = `
+                        <div class="flex items-start justify-between pr-6">
+                            <div>
+                                <h4 class="font-bold text-chocolate text-xs sm:text-sm">${item.nome}</h4>
+                                <p class="text-[10px] sm:text-xs text-ouro font-medium leading-snug">${item.detalhes}</p>
+                            </div>
+                            <span class="font-bold text-chocolate text-xs">${subtotal.toLocaleString('pt-MZ')} MZN</span>
+                        </div>
+                        
+                        <!-- BOTÃO APAGAR (LIXEIRA) -->
+                        <button onclick="removerItemCarrinho(${item.idCart})" title="Remover item" class="absolute top-2.5 right-2.5 text-red-400 hover:text-red-600 p-1 text-xs">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+
+                        <div class="flex items-center justify-between border-t border-gray-200/60 pt-2">
+                            <span class="text-[10px] text-gray-400">${item.preco.toLocaleString('pt-MZ')} MZN un.</span>
+                            <div class="flex items-center border border-gray-200 rounded-lg bg-white overflow-hidden">
+                                <button onclick="alterarQuantidade(${item.idCart}, -1)" class="px-2 py-0.5 text-gray-600 hover:bg-gray-100 text-xs font-bold">-</button>
+                                <span class="px-2 text-xs font-bold text-chocolate">${item.qtd}</span>
+                                <button onclick="alterarQuantidade(${item.idCart}, 1)" class="px-2 py-0.5 text-gray-600 hover:bg-gray-100 text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(itemDiv);
+                });
+            }
+
+            headerCount.innerText = totalItens;
+            floatCount.innerText = totalItens;
+            atualizarTotalCarrinho();
+        }
+
+        // RECALCULA O TOTAL FINAL INCLUINDO DELIVERY
+        function atualizarTotalCarrinho() {
+            let subtotal = 0;
+            carrinho.forEach(item => subtotal += (item.preco * item.qtd));
+
+            const opcaoEntrega = document.querySelector('input[name="opcaoEntrega"]:checked')?.value || 'retirada';
+            const taxaDelivery = opcaoEntrega === 'delivery' ? 100 : 0;
+            const totalFinal = subtotal + taxaDelivery;
+
+            document.getElementById('subtotal-carrinho').innerText = `${subtotal.toLocaleString('pt-MZ')} MZN`;
+            document.getElementById('taxa-delivery-valor').innerText = `${taxaDelivery.toLocaleString('pt-MZ')} MZN`;
+            document.getElementById('total-carrinho').innerText = `${totalFinal.toLocaleString('pt-MZ')} MZN`;
+        }
+
+        function toggleCarrinho(forcarAbertura = false) {
+            const modal = document.getElementById('carrinho-modal');
+            if (forcarAbertura || modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // DISPARAR MENSAGEM COM DETALHES DE DELIVERY NO WHATSAPP
+        function enviarPedidoWhatsApp() {
+            if (carrinho.length === 0) {
+                alert("O seu carrinho está vazio.");
+                return;
+            }
+
+            const telefone = "258842513428";
+            const opcaoEntrega = document.querySelector('input[name="opcaoEntrega"]:checked')?.value || 'retirada';
+            const taxaDelivery = opcaoEntrega === 'delivery' ? 100 : 0;
+
+            let mensagem = "👋 Olá, Agynara Sabores! Gostaria de realizar o seguinte pedido:\n\n";
+
+            let subtotal = 0;
+            carrinho.forEach(item => {
+                const sub = item.preco * item.qtd;
+                subtotal += sub;
+                mensagem += `• *${item.nome}* (${item.detalhes})\n  *Qtd:* ${item.qtd}x | *Subtotal:* ${sub.toLocaleString('pt-MZ')} MZN\n\n`;
+            });
+
+            mensagem += `─────────────\n`;
+            mensagem += `💵 *Subtotal:* ${subtotal.toLocaleString('pt-MZ')} MZN\n`;
+            
+            if (opcaoEntrega === 'delivery') {
+                mensagem += `🛵 *Entrega:* Delivery (+100 MZN Passagem)\n`;
+            } else {
+                mensagem += `🏪 *Entrega:* Retirada no Local\n`;
+            }
+
+            const totalFinal = subtotal + taxaDelivery;
+            mensagem += `💰 *Total a Pagar:* ${totalFinal.toLocaleString('pt-MZ')} MZN\n\n`;
+            mensagem += `Por favor, confirmem a disponibilidade do pedido. Obrigado!`;
+
+            window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
+
+        // FILTRAGEM
+        function filtrarCategoria(categoria, btnElement) {
+            categoriaAtual = categoria;
+            document.getElementById('campo-busca').value = "";
+            document.querySelectorAll('.btn-cat').forEach(b => {
+                b.className = "btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-chocolate text-xs sm:text-sm transition";
+            });
+            if(btnElement) {
+                btnElement.className = "btn-cat shrink-0 px-4 py-2 rounded-xl font-bold bg-chocolate text-white text-xs sm:text-sm transition shadow-sm";
+            }
+            filtrarProdutos();
+        }
+
+        function filtrarProdutos() {
             const termo = document.getElementById('campo-busca').value.toLowerCase().trim();
-            let dadosFiltrados = produtosAginaSabores;
+            let dados = produtosAginaSabores;
 
-            if (categoriaAtual !== 'todos') dadosFiltrados = dadosFiltrados.filter(p => p.categoria === categoriaAtual);
+            if (categoriaAtual !== 'todos') {
+                dados = dados.filter(p => p.categoria.toLowerCase() === categoriaAtual.toLowerCase());
+            }
+
             if (termo !== "") {
-                dadosFiltrados = dadosFiltrados.filter(p => 
+                dados = dados.filter(p => 
                     p.nome.toLowerCase().includes(termo) || 
                     p.descricao.toLowerCase().includes(termo)
                 );
             }
-            renderizarProdutos(dadosFiltrados);
-        }
 
-        function abrirZoom(urlImagem) {
-            const modal = document.getElementById('modalZoom');
-            document.getElementById('zoomImagem').src = urlImagem;
-            modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 50);
+            renderizarProdutos(dados);
         }
-
-        function fecharZoom() {
-            const modal = document.getElementById('modalZoom');
-            modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
-
-        function encomendarWhatsApp(nome, preco) {
-            const telefone = "258877395724";
-            const mensagem = `Olá, Agina'Sabores! Gostaria de encomendar: *${nome}* (Valor: ${parseFloat(preco).toLocaleString('pt-MZ')} MZN).`;
-            window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`, '_blank');
-        }
-
-        iniciarCardapio();
     </script>
 </body>
 </html>
