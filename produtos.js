@@ -64,7 +64,7 @@ const produtosAginaSabores = [
         nome: "Rissóis (Meia-Dúzia)",
         categoria: "salgados",
         descricao: "Porção de 6 unidades de rissóis recheados e empanados com crosta dourada e crocante.",
-        precoBase: 200,
+        precoBase: 300,
         imagens: [
             "imagens/rissois-de-camarao1.jpg",
             "imagens/rissois.jpeg",
@@ -73,9 +73,7 @@ const produtosAginaSabores = [
         ],
         opcoes: {
             recheios: [
-                { nome: "Frango", preco: 200 },
-                { nome: "Carne", preco: 200 },
-                { nome: "Camarão Especial", preco: 300 }
+                { nome: "Frango", preco: 300 },
             ]
         }
     },
@@ -84,13 +82,13 @@ const produtosAginaSabores = [
         nome: "Mini Pizzas Artesanais",
         categoria: "salgados",
         descricao: "Mini pizzas deliciosas assadas na hora com molho artesanal e muito queijo. Escolha a porção (6 ou 12 unidades) e o sabor.",
-        precoBase: 200,
+        precoBase: 300,
         imagens: ["imagens/Pizza1.jpeg", "imagens/Pizza2.jpeg"],
         opcoes: {
             tamanhos: [
-                { nome: "Porção de 6 Unidades (Frango / Atum)", preco: 200 },
+                { nome: "Porção de 6 Unidades (Frango / Atum)", preco: 300 },
                 { nome: "Porção de 6 Unidades (Carne)", preco: 300 },
-                { nome: "Porção de 12 Unidades (Frango / Atum)", preco: 400 },
+                { nome: "Porção de 12 Unidades (Frango / Atum)", preco: 600 },
                 { nome: "Porção de 12 Unidades (Carne)", preco: 600 }
             ],
             sabores: ["Frango com Queijo", "Carne Moída", "Atum com Queijo"]
