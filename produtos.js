@@ -73,7 +73,7 @@ const produtosAginaSabores = [
         ],
         opcoes: {
             recheios: [
-                { nome: "Frango", preco: 300 },
+                { nome: "Frango", preco: 300 }
             ]
         }
     },
@@ -82,7 +82,7 @@ const produtosAginaSabores = [
         nome: "Mini Pizzas Artesanais",
         categoria: "salgados",
         descricao: "Mini pizzas deliciosas assadas na hora com molho artesanal e muito queijo. Escolha a porção (6 ou 12 unidades) e o sabor.",
-        precoBase: 300,
+        precoBase: 200,
         imagens: ["imagens/Pizza1.jpeg", "imagens/Pizza2.jpeg"],
         opcoes: {
             tamanhos: [
@@ -131,6 +131,25 @@ const produtosAginaSabores = [
                 { nome: "Ninho com Nutella", preco: 120 },
                 { nome: "Maracujá & Mousse", preco: 120 },
                 { nome: "Red Velvet", preco: 150 }
+            ]
+        }
+    },
+    {
+        id: 8,
+        nome: "Bandeja de Mimos Especial",
+        categoria: "promocoes",
+        descricao: "O presente completo ideal! Contém: mini bolo decorado, rissóis crocantes, uma maçã de chocolate requintada e sumo.",
+        precoBase: 1500,
+        imagens: [
+            "imagens/bandeja-mimos.jpeg",
+            "imagens/bandeja-mimos-2.jpeg",
+            "imagens/bandeja-mimos-3.jpeg"
+        ],
+        opcoes: {
+            tamanhos: [
+                { nome: "Bandeja Simples (Mini Bolo + Salgados + Sumo)", preco: 1500 },
+                { nome: "Bandeja Especial (Com Maçã do Amor & Mimos Extras)", preco: 1800 },
+                { nome: "Bandeja Luxo Completa", preco: 2000 }
             ]
         }
     }
