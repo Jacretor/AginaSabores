@@ -74,7 +74,7 @@ const produtosAginaSabores = [
             recheios: [
                 { nome: "Batata", preco: 150 },
                 { nome: "Peixe", preco: 180 },
-                { nome: "Frango", preco: 200 },
+                { nome: "Frango", preco: 250 },
                 { nome: "Carne Moída Premium", preco: 300 }
             ]
         }
